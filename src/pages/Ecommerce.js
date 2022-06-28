@@ -1,7 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function Ecommerce() {
-  return (
-    <div>Ecommerce</div>
-  )
+  return <div>I am from ECommerce</div>;
 }
