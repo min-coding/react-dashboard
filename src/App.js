@@ -22,10 +22,12 @@ import {
   Stacked,
 } from './pages';
 
+import { Context } from './context/ContextProvider';
 import './App.css';
 
 export default function App() {
-  const activeMenu = true;
+  // const activeMenu = true;
+  const { activeMenu } = React.useContext(Context);
 
   return (
     <div>
