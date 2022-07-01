@@ -33,6 +33,7 @@ export default function App() {
     <div>
       <BrowserRouter>
         <div className="flex relative dark:bg-main-darg-bg">
+          {/* Setting icon */}
           <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
             <TooltipComponent content="Settings" position="Top">
               <button
@@ -44,6 +45,8 @@ export default function App() {
               </button>
             </TooltipComponent>
           </div>
+
+          {/* Sidebar */}
           {activeMenu ? (
             <div className="w-72 fixed sidebar dark:bg-secondary-dark- bg-white">
               <Sidebar></Sidebar>
@@ -53,42 +56,46 @@ export default function App() {
               <Sidebar></Sidebar>
             </div>
           )}
+
+          {/* Main content */}
           <div
             className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${
               activeMenu ? 'md:ml-72' : 'flex-2'
             }`}
           >
+            {/* Navbar at the top */}
             <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full">
               <Navbar></Navbar>
             </div>
-          </div>
-          <div>
-            <Routes>
-              {/* Dashboard */}
-              <Route path="/" element={<Ecommerce />}></Route>
-              <Route path="/ecommerce" element={<Ecommerce />}></Route>
 
-              {/* Pages */}
-              <Route path="/orders" element={<Orders />}></Route>
-              <Route path="/employees" element={<Employees />}></Route>
-              <Route path="/customers" element={<Customers />}></Route>
+            <div>
+              <Routes>
+                {/* Dashboard */}
+                <Route path="/" element={<Ecommerce />}></Route>
+                <Route path="/ecommerce" element={<Ecommerce />}></Route>
 
-              {/* Apps */}
-              <Route path="/kanban" element={<Kanban />}></Route>
-              <Route path="/editor" element={<Editor />}></Route>
-              <Route path="/calendar" element={<Calendar />}></Route>
-              <Route path="/color-picker" element={<ColorPicker />}></Route>
+                {/* Pages */}
+                <Route path="/orders" element={<Orders />}></Route>
+                <Route path="/employees" element={<Employees />}></Route>
+                <Route path="/customers" element={<Customers />}></Route>
 
-              {/* Charts */}
-              <Route path="/line" element={<Line />}></Route>
-              <Route path="/area" element={<Area />}></Route>
-              <Route path="/bar" element={<Bar />}></Route>
-              <Route path="/pie" element={<Pie />}></Route>
-              <Route path="/financial" element={<Financial />}></Route>
-              <Route path="/color-mapping" element={<ColorMapping />}></Route>
-              <Route path="/pyramid" element={<Pyramid />}></Route>
-              <Route path="/stacked" element={<Stacked />}></Route>
-            </Routes>
+                {/* Apps */}
+                <Route path="/kanban" element={<Kanban />}></Route>
+                <Route path="/editor" element={<Editor />}></Route>
+                <Route path="/calendar" element={<Calendar />}></Route>
+                <Route path="/color-picker" element={<ColorPicker />}></Route>
+
+                {/* Charts */}
+                <Route path="/line" element={<Line />}></Route>
+                <Route path="/area" element={<Area />}></Route>
+                <Route path="/bar" element={<Bar />}></Route>
+                <Route path="/pie" element={<Pie />}></Route>
+                <Route path="/financial" element={<Financial />}></Route>
+                <Route path="/color-mapping" element={<ColorMapping />}></Route>
+                <Route path="/pyramid" element={<Pyramid />}></Route>
+                <Route path="/stacked" element={<Stacked />}></Route>
+              </Routes>
+            </div>
           </div>
         </div>
       </BrowserRouter>
