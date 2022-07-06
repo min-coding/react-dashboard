@@ -27,10 +27,16 @@ import './App.css';
 
 export default function App() {
   // const activeMenu = true;
-  const { activeMenu } = React.useContext(Context);
+  const {
+    activeMenu,
+    themeSettings,
+    setThemeSettings,
+    currentColor,
+    currentMode,
+  } = React.useContext(Context);
 
   return (
-    <div>
+    <div className={currentMode === 'Dark' ? 'dark' : ''}>
       <BrowserRouter>
         <div className="flex relative dark:bg-main-darg-bg">
           {/* Setting icon */}
@@ -39,7 +45,8 @@ export default function App() {
               <button
                 className="text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white"
                 type="button"
-                style={{ background: 'blue', borderRadius: '50%' }}
+                style={{ background: currentColor, borderRadius: '50%' }}
+                onClick={() => setThemeSettings(true)}
               >
                 <FiSettings></FiSettings>
               </button>
@@ -48,7 +55,7 @@ export default function App() {
 
           {/* Sidebar */}
           {activeMenu ? (
-            <div className="w-72 fixed sidebar dark:bg-secondary-dark- bg-white">
+            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
               <Sidebar></Sidebar>
             </div>
           ) : (
@@ -59,9 +66,8 @@ export default function App() {
 
           {/* Main content */}
           <div
-            className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${
-              activeMenu ? 'md:ml-72' : 'flex-2'
-            }`}
+            className={`dark:bg-main-dark-bg bg-main-bg min-h-screen w-full 
+            ${activeMenu ? 'md:ml-72' : 'flex-2'}`}
           >
             {/* Navbar at the top */}
             <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full">
@@ -69,6 +75,8 @@ export default function App() {
             </div>
 
             <div>
+              {themeSettings && <ThemeSettings />}
+
               <Routes>
                 {/* Dashboard */}
                 <Route path="/" element={<Ecommerce />}></Route>

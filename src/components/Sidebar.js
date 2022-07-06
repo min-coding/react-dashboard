@@ -7,12 +7,13 @@ import { links } from '../data/dummy';
 import { Context } from '../context/ContextProvider';
 
 export default function Sidebar() {
-  const { activeMenu, setActiveMenu, screenSize } = React.useContext(Context);
+  const { activeMenu, setActiveMenu, screenSize, currentColor } =
+    React.useContext(Context);
 
   const activeLink =
     'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2';
   const normalLink =
-    'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md text-gray-700 dark:text-gray-200 dark:hover-text-black hover:bg-light-gray m-2';
+    'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2';
 
   function handleCloseSideBar() {
     if (activeMenu && screenSize <= 900) {
@@ -38,6 +39,7 @@ export default function Sidebar() {
               <button
                 type="button"
                 onClick={() => setActiveMenu((prev) => !prev)}
+                style={{ color: currentColor }}
                 className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden"
               >
                 <MdOutlineCancel></MdOutlineCancel>
@@ -53,6 +55,9 @@ export default function Sidebar() {
                     to={`/${link.name}`}
                     key={link.name}
                     onClick={handleCloseSideBar}
+                    style={({ isActive }) => ({
+                      backgroundColor: isActive ? currentColor : '',
+                    })}
                     className={({ isActive }) =>
                       isActive ? activeLink : normalLink
                     }
