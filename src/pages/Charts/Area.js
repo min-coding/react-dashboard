@@ -30,6 +30,11 @@ export default function Area() {
           chartArea={{ border: { width: 0 } }}
           tooltip={{ enable: true }}
           background={currentMode === 'Dark' ? '#33373E' : '#fff'}
+          legendSettings={{
+            visible: true,
+            background: '#fff',
+            position: 'Bottom',
+          }}
         >
           <Inject services={[SplineAreaSeries, DateTime, Legend]} />
           <SeriesCollectionDirective>
